@@ -1,0 +1,24 @@
+<app-nav></app-nav>
+
+<div class="d-flex">
+
+<app-sidnav></app-sidnav>
+
+<div class="container-fluid col-lg-10  shadow-lg bg-light">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white;">Carregando...</p>
+</ngx-spinner>
+
+
+

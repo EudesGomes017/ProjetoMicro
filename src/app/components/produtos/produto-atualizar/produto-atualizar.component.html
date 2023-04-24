@@ -1,0 +1,98 @@
+
+<div class="card rounded shadow-sm  " >
+  <form [formGroup]="form">
+      <div class="p-3">
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+
+            <label>Nome do Produto</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.NameProduto)"
+              formControlName="NameProduto" placeholder="Insira o Produto"
+              [(ngModel)]="produtos.NameProduto" name="NameColaborador">
+
+
+
+              <div *ngIf="f.NameProduto.errors?.required" class="invalid-feedback">
+                Tema é obrigatório.
+              </div>
+              <div *ngIf="f.NameProduto.errors?.minlength" class="invalid-feedback">
+                Tema deve ter no mínimo 4 caracteres.
+              </div>
+              <div *ngIf="f.NameProduto.errors?.maxlength" class="invalid-feedback">
+                Tema deve ter no máximo 50 caracteres.
+              </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-8">
+            <label>Nome Colaborador</label>
+            <input type="text" class="form-control" [ngClass]="cssValidator(f.NameColaborador)"
+            formControlName="NameColaborador" placeholder=""
+            [(ngModel)]="produtos.NameColaborador" name="NameColaborador">
+
+            <div *ngIf="f.NameColaborador.errors?.required" class="invalid-feedback">
+              Nome do Colaborador é Obrigatorio.
+            </div>
+
+          </div>
+          <div class=" col-md-4">
+            <label>Data e Hora</label>
+            <input type="datetime" class="form-control" [ngClass]="cssValidator(f.dataProdut)"
+            formControlName="dataProdut"
+             placeholder=""
+            [(ngModel)]="produtos.dataProdut" name="dataProdut">
+
+            <div *ngIf="f.NameColaborador.errors?.required" class="invalid-feedback">
+              Data é obrigatório.
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <label>Quantidade de Produto</label>
+            <input type="text" class="form-control is-invalid" [ngClass]="cssValidator(f.qtdProduto)"
+            formControlName="qtdProduto"
+             placeholder=""
+            [(ngModel)]="produtos.qtdProduto" name="qtdProduto">
+
+            <div *ngIf="f.NameColaborador.errors?.required" class="invalid-feedback">
+              Quantidade de Produto é obrigatório!
+            </div>
+
+          </div>
+          <div class="col-md-10">
+            <label>Email</label>
+            <input type="text" class="form-control"  [ngClass]="cssValidator(f.email)"
+            formControlName="email" placeholder="e-mail">
+
+            <div *ngIf="f.NameColaborador.errors?.required" class="invalid-feedback">
+              E-mail obrigatório!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="d-flex">
+          <button class="btn btn-outline-secondary mr-auto border" routerLink="/produtos/lista">
+            Cancelar Alteração
+          </button>
+          <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+
+          <button class="btn btn-success"  (click)=" update()">
+            <span class="spinner-border spinner-border-sm mr-1"></span>
+            Salvar Alteração
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+    </div>
+
