@@ -52,18 +52,12 @@ export class ProdutoDetalheComponent implements OnInit {
 
   createProduct(): void {
 
-    if (this.form.valid) {
-      let service = {} as Observable<Produto>;
+    this.service.create(this.produtos).subscribe({
 
-    if (this.estadoSalvar == 'post') {
-        this.produtos = { ...this.form.value };
-        service = this.service.create(this.produtos);
-        console.log(this.estadoSalvar )
-      }
-
-    service.subscribe({
       next: () => {
+      let test = this.router.navigate([`/produtos/lista`])
         this.toastr.success('Evento salvo com Sucesso!', 'Sucesso');
+        console.log(test)
       },
 
       error: (e: any) => {
@@ -79,7 +73,7 @@ export class ProdutoDetalheComponent implements OnInit {
     }
 
 
-  }
+
 
 
 

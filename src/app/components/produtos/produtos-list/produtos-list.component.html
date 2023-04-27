@@ -1,10 +1,11 @@
-<div class="container shadow-sm ">
-  <div class="row">
+<div class="card rounded shadow-sm p-3">
+
+
   <div class="d-flex">
     <div class="flex-fill pr-3">
       <div class="input-group mb-2">
         <div class="input-group-prepend">
-          <div class="input-group-text">Filtro: </div>
+          <div class="input-group-text">Filtro:</div>
         </div>
         <input
         type="text"
@@ -23,7 +24,10 @@
     </div>
   <!-- <h3>Filtro: {{filtroLista}}</h3> -->
 
-  <table class="table-responsive-sm container-fluid  bg-secondary ">
+  <table class="table-responsive-sm bg-secondary ">
+    <div class=" col-12">
+
+    </div>
 
     <thead class="thead-dark ">
 
@@ -48,7 +52,7 @@
 
   </thead>
 
-  <tbody class="bg-light " *ngIf=" produtosFiltrados && produtos.length">
+  <tbody class="bg-light" *ngIf=" produtosFiltrados && produtos.length">
     <tr *ngFor="let prod of produtos"  >
       <th class="d-none d-md-table-cell">
         <img [collapse]="!exibirImagem"
@@ -73,7 +77,6 @@
 
       </td>
 
-
       <td  class="">
         <button  type="button" class="btn btn-lg bg-danger button"  (click)=" openModal($event, template, prod.id)">
           <i class="fa fa-trash"></i>
@@ -90,11 +93,6 @@
   </tfoot>
 </table>
 </div>
-</div>
-
-
-
-
 
 <!-- {{eventos  id: number;
   NameProduto: string;
