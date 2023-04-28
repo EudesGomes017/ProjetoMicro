@@ -35,6 +35,11 @@ import { ProdutoAtualizarComponent } from './components/produtos/produto-atualiz
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { truncateSync } from 'fs';
+import { UserComponent } from './user/user.component';
+import { RegistrationComponent } from './user/registration/registration.component';
+import { PerfilComponent } from './user/perfil/perfil.component';
+import { LoginComponent } from './user/login/login.component';
+
 
 
 
@@ -49,8 +54,11 @@ import { truncateSync } from 'fs';
     ProdutosListComponent,
     DateTimeFormatPipePipe,
     SidnavComponent,
-    ProdutoAtualizarComponent
-
+    ProdutoAtualizarComponent,
+    UserComponent,
+    RegistrationComponent,
+    PerfilComponent,
+    LoginComponent,
 
   ],
 

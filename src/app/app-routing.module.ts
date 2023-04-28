@@ -5,10 +5,22 @@ import { ProdutoDetalheComponent } from './components/produtos/produto-detalhe/p
 import { ProdutosListComponent } from './components/produtos/produtos-list/produtos-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProdutoAtualizarComponent } from './components/produtos/produto-atualizar/produto-atualizar.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegistrationComponent } from './user/registration/registration.component';
 
 const routes: Routes = [
 
   //{ path: 'user/perfil', component: PerfilComponent },
+
+
+  {
+    path: 'user', component: UserComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'registration', component: RegistrationComponent },
+    ]
+  },
 
   { path: 'produtos', redirectTo: 'produtos/lista' },
 
