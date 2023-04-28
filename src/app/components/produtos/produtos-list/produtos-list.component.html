@@ -1,110 +1,151 @@
-<div class="card rounded shadow-sm p-3">
-
-
-  <div class="d-flex">
-    <div class="flex-fill pr-3">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Filtro:</div>
+<div class="container-fluid shadow-sm p-3">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex">
+        <div class="flex-fill pr-3">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Filtro:</div>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Filtrar por Produtos"
+              [(ngModel)]="filtroLista"
+            />
+          </div>
         </div>
-        <input
-        type="text"
-        class="form-control"
-        placeholder="Filtrar por Produtos"
-        [(ngModel)]="filtroLista"
-        >
+        <div>
+          <div>
+            <a
+              class="d-flex btn btn-outline-primary"
+              routerLink="/produtos/detalhe"
+              style="margin-left: 4px"
+            >
+              <i class="fa fa-plus-circle my-1"></i>
+              <b class="ml-1 d-none d-sm-block">Cadastrar</b>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <div >
-      <a class="d-flex btn btn-outline-primary" routerLink="/produtos/detalhe" style="margin-left: 4px;">
-        <i class="fa fa-plus-circle my-1"></i>
-        <b class="ml-1 d-none d-sm-block">Cadastrar</b>
-      </a>
-    </div>
-    </div>
+  </div>
   <!-- <h3>Filtro: {{filtroLista}}</h3> -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive bg-danger list-group">
+          <table class="table">
+            <thead ng-style="{ 'overflow-x': 'auto' }" class="text-center">
+              <div >
 
-  <table class="table-responsive-sm bg-secondary ">
-    <div class=" col-12">
+              </div>
+              <!--  efeito alterar imagem de abri e efechar
 
-    </div>
+              <tr class="row-fluid">
+                <th class="d-none d-md-table-cell">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light btn-sm"
+                    (click)="alterarImagem()"
+                  >
+                    <i
+                      class="{{
+                        !exibirImagem ? 'fa fa-eye' : 'fa fa-eye-slash'
+                      }}"
+                    ></i>
+                    {{ !exibirImagem ? "exibir" : "ocultar" }}
+                  </button>
+                </th>
+                  -->
+              <tr>
+                <th class="d-flex flex-column align-items-start" scope="col" class="d-none d-md-table-cell">Imagem</th>
+                <th scope="col" class="d-none d-md-table-cell">item</th>
+                <th scope="col">Produto</th>
+                <th class="d-none d-md-table-cell">Email</th>
+                <th>Data e Hora</th>
+                <th class="d-none d-md-table-cell">Nome Colaborador</th>
+                <th class="d-none d-md-table-cell">Estoque</th>
+                <th>Atualizar</th>
+                <th>Excluir</th>
+              </tr>
+            </thead>
 
-    <thead class="thead-dark ">
+            <tbody
+              class="bg-light text-center list-section-item align-items-center"
+              *ngIf="produtosFiltrados && produtos.length"
+            >
+              <tr *ngFor="let prod of produtos">
+                <th class="d-none d-md-table-cell">
+                  <img
+                    src="/assets/foto.jpg"
+                    [style.width.px]="larguraImagem"
+                    [style.margin.px]="margemImagem"
+                  />
+                </th>
+                <th scope="col" class="d-none d-md-table-cell">
+                  {{ prod.id }}
+                </th>
+                <th scope="col">{{ prod.NameProduto }}</th>
+                <th scope="col" class="d-none d-md-table-cell">
+                  {{ prod.email }}
+                </th>
+                <th scope="col">{{ prod.dataProdut | DateTimeFormat }}</th>
+                <th scope="col">{{ prod.NameColaborador }}</th>
+                <th scope="col">{{ prod.qtdProduto }}</th>
 
-      <tr  class=" row-fluid">
-        <th class="d-none d-md-table-cell">
-          <button type="button" class="btn btn-outline-light btn-sm"
-          (click)="alterarImagem()">
-          <i class="{{!exibirImagem ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
-          {{!exibirImagem ? 'exibir' : 'ocultar'}}
-        </button>
-      </th>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-lg bg-primary button"
+                    (click)="Atualiza(prod.id)"
+                    style="cursor: pointer"
+                  >
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </td>
 
-      <th class="d-none d-md-table-cell">item</th>
-      <th >Produto</th>
-      <th class="d-none d-md-table-cell">Email</th>
-      <th>Data e Hora</th>
-      <th class="d-none d-md-table-cell">Nome Colaborador</th>
-      <th class="d-none d-md-table-cell">Estoque</th>
-      <th >Atualizar</th>
-      <th >Excluir</th>
-    </tr>
+                <td class="">
+                  <button
+                    type="button"
+                    class="btn btn-lg bg-danger button"
+                    (click)="openModal($event, template, prod.id)"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
 
-  </thead>
+            <tfoot *ngIf="!produtos.length">
+              <tr>
+                <td colspan="8" class="text-center">
+                  <h4>Nenhum evento encontrado!</h4>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
 
-  <tbody class="bg-light" *ngIf=" produtosFiltrados && produtos.length">
-    <tr *ngFor="let prod of produtos"  >
-      <th class="d-none d-md-table-cell">
-        <img [collapse]="!exibirImagem"
-        [isAnimated]="true"
-        src="/assets/foto.jpg"
-        [style.width.px]="larguraImagem"
-        [style.margin.px]="margemImagem"
-        >
-      </th>
-      <th class="d-none d-md-table-cell">{{prod.id}}</th>
-      <th >{{prod.NameProduto}}</th>
-      <th class="d-none d-md-table-cell">{{prod.email}}</th>
-      <th >{{prod.dataProdut | DateTimeFormat}}</th>
-      <th >{{prod.NameColaborador}}</th>
-      <th >{{prod.qtdProduto}}</th>
-
-
-      <td >
-        <button  type="button" class="btn btn-lg bg-primary button" (click)="Atualiza(prod.id)" style="cursor: pointer;">
-          <i class="fa fa-edit"></i>
-        </button>
-
-      </td>
-
-      <td  class="">
-        <button  type="button" class="btn btn-lg bg-danger button"  (click)=" openModal($event, template, prod.id)">
-          <i class="fa fa-trash"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-  <tfoot *ngIf="!produtos.length">
-    <tr>
-      <td colspan="8" class="text-center">
-        <h4>Nenhum evento encontrado!</h4>
-      </td>
-    </tr>
-  </tfoot>
-</table>
-</div>
-
-<!-- {{eventos  id: number;
+      <!-- {{eventos  id: number;
   NameProduto: string;
   NameColaborador: string,
   dataProdut?: string;
   qtdProduto: string;
   opcaoes: number; | json}} -->
 
-<ng-template #template>
-  <div class="modal-body text-center">
-    <p>Tem certeza que quer deletar este Evento?</p>
-    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
-    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+      <ng-template #template>
+        <div class="modal-body text-center">
+          <p>Tem certeza que quer deletar este Evento?</p>
+          <button type="button" class="btn btn-default" (click)="confirm()">
+            Sim
+          </button>
+          <button type="button" class="btn btn-primary" (click)="decline()">
+            Não
+          </button>
+        </div>
+      </ng-template>
+    </div>
   </div>
-</ng-template>
+</div>
