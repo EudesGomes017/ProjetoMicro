@@ -22,7 +22,7 @@ export class ProdutosListComponent implements OnInit {
   produtosId = 0
 
 
-  public larguraImagem = 60;
+  public larguraImagem = 30;
   public margemImagem = 2;
   public exibirImagem = true;
   public filtroListado = '';

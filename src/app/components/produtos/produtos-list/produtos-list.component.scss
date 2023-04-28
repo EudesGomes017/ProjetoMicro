@@ -4,19 +4,61 @@
   }
 
 
-.td {
-  padding-left: 25px;
+
+/*table {
+  table-layout: fixed;
+  width: 100%;
 }
 
+t {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+*/
 
-.tteste {
 
-  .estoque {
-    padding-right: 15;
+table {
+  border: 0.5pt solid #7a7a7a;
+}
+
+@media (max-width: 1000px) {
+  .table-responsive {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .photo {
+    display: none !important;
+  }
+
+  .table-responsive thead,
+  .table-responsive tbody,
+  .table-responsive th,
+  .table-responsive td,
+  .table-responsive tr {
+    display: block;
+  }
+
+  .table-responsive td,
+  .table-responsive th {
+    height: 35px;
+  }
+
+  .table-responsive thead {
+    float: left;
+  }
+
+  .table-responsive tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .table-responsive tbody tr {
+    display: inline-block;
   }
 }
-
-
-
-
-

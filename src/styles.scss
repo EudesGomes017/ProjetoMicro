@@ -10,3 +10,9 @@
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 
+.bg-image {
+  background-image: url('./assets/MI02.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
